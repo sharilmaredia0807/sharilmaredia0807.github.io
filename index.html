@@ -494,6 +494,23 @@ section {
 }
 .timeline-company + .timeline-meta { margin-top: 0.75rem; }
 
+/* Role row with optional photo on the right */
+.exp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+}
+.exp-text { flex: 1; min-width: 0; }
+.exp-img {
+  flex: 0 0 320px;
+  width: 320px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  display: block;
+}
+
 /* Tesla grouped entries */
 .tesla-badge {
   display: inline-block;
@@ -883,6 +900,8 @@ section {
 }
 
 @media (max-width: 768px) {
+  .exp-row { flex-direction: column; gap: 1rem; }
+  .exp-img { flex: none; width: 100%; }
   section { padding: 4rem 1.5rem; }
   #nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
@@ -1021,13 +1040,23 @@ section {
     <div class="timeline-item reveal">
       <span class="tesla-badge">3 INTERNSHIPS</span>
       <div class="timeline-company">Tesla</div>
-      <div class="timeline-meta">May 2025 – Aug 2025 · Hawthorne, CA</div>
-      <div class="timeline-role">New Programs Engineering Intern</div>
-      <p class="timeline-desc">Roadster</p>
+      <div class="exp-row">
+        <div class="exp-text">
+          <div class="timeline-meta">May 2025 – Aug 2025 · Hawthorne, CA</div>
+          <div class="timeline-role">New Programs Engineering Intern</div>
+          <p class="timeline-desc">Roadster</p>
+        </div>
+        <img class="exp-img" src="roadster.avif" alt="Tesla Roadster" width="1400" height="933" loading="lazy" decoding="async">
+      </div>
       <hr class="tesla-divider">
-      <div class="timeline-meta">Jun 2024 – Aug 2024 · Hawthorne, CA</div>
-      <div class="timeline-role">New Programs Engineering Intern</div>
-      <p class="timeline-desc">Cybercab + Robovan</p>
+      <div class="exp-row">
+        <div class="exp-text">
+          <div class="timeline-meta">Jun 2024 – Aug 2024 · Hawthorne, CA</div>
+          <div class="timeline-role">New Programs Engineering Intern</div>
+          <p class="timeline-desc">Cybercab + Robovan</p>
+        </div>
+        <img class="exp-img" src="cybercabandrobovan.webp" alt="Tesla Robovan and Cybercab" width="1500" height="641" loading="lazy" decoding="async">
+      </div>
       <hr class="tesla-divider">
       <div class="timeline-meta">May 2023 – Aug 2023 · Palo Alto, CA</div>
       <div class="timeline-role">Mechanical Design Engineering Intern</div>
