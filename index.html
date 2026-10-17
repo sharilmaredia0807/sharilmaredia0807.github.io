@@ -20,6 +20,8 @@
   --surface:  #111111;
   --surface2: #1a1a1a;
   --red:      #E31E24;
+  --cursor-dot:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Ccircle cx='6' cy='6' r='4' fill='%23E31E24'/%3E%3C/svg%3E") 6 6, auto;
+  --cursor-ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='%23E31E24' stroke-width='1.5'/%3E%3C/svg%3E") 12 12, pointer;
   --text:     #f0f0f0;
   --muted:    #888888;
   --border:   #222222;
@@ -37,7 +39,7 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  cursor: none;
+  cursor: var(--cursor-dot);
   overflow-x: hidden;
 }
 
@@ -59,23 +61,10 @@ ul { list-style: none; }
 }
 
 /* ========================================
-   CUSTOM CURSOR
+   CURSOR — native (no JS), so it never lags
    ======================================== */
-#cursor {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s;
-  will-change: left, top;
-}
-#cursor.hover {
-  width: 22px; height: 22px;
-  background: transparent;
-  border: 1.5px solid var(--red);
+a, button, .skill-tag, .project-card, .edu-card, .social-link, .btn-primary, .btn-secondary {
+  cursor: var(--cursor-ring);
 }
 
 /* ========================================
@@ -139,7 +128,7 @@ ul { list-style: none; }
   background: none;
   border: none;
   padding: 4px;
-  cursor: none;
+  cursor: var(--cursor-ring);
 }
 .nav-hamburger span {
   display: block;
@@ -176,7 +165,7 @@ ul { list-style: none; }
   border: none;
   color: var(--muted);
   font-size: 1.5rem;
-  cursor: none;
+  cursor: var(--cursor-ring);
   font-family: var(--font-mono);
 }
 
@@ -274,8 +263,6 @@ section {
   animation: fadeUp 0.5s ease forwards;
 }
 .hero-subtitle .word:nth-child(1) { animation-delay: 0.28s; color: var(--text); }
-.hero-subtitle .word:nth-child(2) { animation-delay: 0.40s; color: var(--text); }
-.hero-subtitle .word:nth-child(3) { animation-delay: 0.52s; color: var(--muted); }
 
 .hero-bio {
   font-size: 1.05rem;
@@ -394,7 +381,7 @@ section {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 480px;
+  max-width: 400px;
   height: auto;
   display: block;
 }
@@ -501,15 +488,36 @@ section {
   gap: 2.5rem;
 }
 .exp-text { flex: 1; min-width: 0; }
-.exp-img {
+.exp-figure {
+  position: relative;
   flex: 0 0 320px;
-  width: 320px;
+  margin: 0;
+}
+.exp-img {
+  width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
   object-fit: cover;
   border: 1px solid var(--border);
   display: block;
 }
+
+/* Image credit — revealed on hover (always shown on touch screens) */
+.img-credit {
+  position: absolute;
+  right: 0; bottom: 0;
+  padding: 0.3rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: rgba(240,240,240,0.85);
+  background: rgba(10,10,10,0.7);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.exp-figure:hover .img-credit { opacity: 1; }
+@media (hover: none) { .img-credit { opacity: 1; } }
 
 /* Tesla grouped entries */
 .tesla-badge {
@@ -901,7 +909,7 @@ section {
 
 @media (max-width: 768px) {
   .exp-row { flex-direction: column; gap: 1rem; }
-  .exp-img { flex: none; width: 100%; }
+  .exp-figure { flex: none; width: 100%; }
   section { padding: 4rem 1.5rem; }
   #nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
@@ -919,11 +927,6 @@ section {
 </style>
 </head>
 <body>
-
-<!-- ========================================
-     CUSTOM CURSOR
-     ======================================== -->
-<div id="cursor"></div>
 
 <!-- ========================================
      SCROLL PROGRESS BAR
@@ -968,9 +971,8 @@ section {
     <div class="hero-text">
       <h1 class="hero-name">Sharil Maredia</h1>
 
-      <!-- Staggered word animation -->
-      <p class="hero-subtitle">
-        <span class="word">Engineer.</span>&ensp;<span class="word">Builder.</span>&ensp;<span class="word">Mechanical&nbsp;Engineer&nbsp;@ Sunday.</span>
+            <p class="hero-subtitle">
+        <span class="word">Mechanical&nbsp;Engineer&nbsp;@ Sunday.</span>
       </p>
 
       <p class="hero-bio">
@@ -1030,10 +1032,18 @@ section {
 
     <!-- Sunday -->
     <div class="timeline-item reveal">
-      <div class="timeline-meta">Jul 2026 – Present · Full-Time</div>
-      <div class="timeline-company">Sunday</div>
-      <div class="timeline-role">Mechanical Engineer</div>
-      <p class="timeline-desc">Bringing humanoid robotics into the home</p>
+      <div class="exp-row">
+        <div class="exp-text">
+          <div class="timeline-meta">Jul 2026 – Present · Full-Time</div>
+          <div class="timeline-company">Sunday</div>
+          <div class="timeline-role">Mechanical Engineer</div>
+          <p class="timeline-desc">Bringing humanoid robotics into the home</p>
+        </div>
+        <figure class="exp-figure">
+          <img class="exp-img" src="memo.webp" alt="Sunday humanoid robot serving a plate at home" width="2000" height="1000" loading="lazy" decoding="async">
+          <figcaption class="img-credit">Image by Sunday</figcaption>
+        </figure>
+      </div>
     </div>
 
     <!-- Tesla — grouped with 3-internships badge -->
@@ -1046,7 +1056,10 @@ section {
           <div class="timeline-role">New Programs Engineering Intern</div>
           <p class="timeline-desc">Roadster</p>
         </div>
-        <img class="exp-img" src="roadster.avif" alt="Tesla Roadster" width="1400" height="933" loading="lazy" decoding="async">
+        <figure class="exp-figure">
+          <img class="exp-img" src="roadster.avif" alt="Tesla Roadster" width="1400" height="933" loading="lazy" decoding="async">
+          <figcaption class="img-credit">Image by Tesla</figcaption>
+        </figure>
       </div>
       <hr class="tesla-divider">
       <div class="exp-row">
@@ -1055,20 +1068,39 @@ section {
           <div class="timeline-role">New Programs Engineering Intern</div>
           <p class="timeline-desc">Cybercab + Robovan</p>
         </div>
-        <img class="exp-img" src="cybercabandrobovan.webp" alt="Tesla Robovan and Cybercab" width="1500" height="641" loading="lazy" decoding="async">
+        <figure class="exp-figure">
+          <img class="exp-img" src="cybercabandrobovan.webp" alt="Tesla Robovan and Cybercab" width="1500" height="641" loading="lazy" decoding="async">
+          <figcaption class="img-credit">Image by Tesla</figcaption>
+        </figure>
       </div>
       <hr class="tesla-divider">
-      <div class="timeline-meta">May 2023 – Aug 2023 · Palo Alto, CA</div>
-      <div class="timeline-role">Mechanical Design Engineering Intern</div>
-      <p class="timeline-desc">S/X and 3/Y HV Battery Pack</p>
+      <div class="exp-row">
+        <div class="exp-text">
+          <div class="timeline-meta">May 2023 – Aug 2023 · Palo Alto, CA</div>
+          <div class="timeline-role">Mechanical Design Engineering Intern</div>
+          <p class="timeline-desc">S/X and 3/Y HV Battery Pack</p>
+        </div>
+        <figure class="exp-figure">
+          <img class="exp-img" src="ev-battery.jpg" alt="EV battery pack" width="620" height="349" loading="lazy" decoding="async">
+          <figcaption class="img-credit">Image by NexDrive</figcaption>
+        </figure>
+      </div>
     </div>
 
     <!-- SpaceX -->
     <div class="timeline-item reveal">
-      <div class="timeline-meta">May 2022 – Aug 2022 · Redmond, WA</div>
-      <div class="timeline-company">SpaceX</div>
-      <div class="timeline-role">Mechanical Engineering Intern</div>
-      <p class="timeline-desc">v2.0 Starlink Solar Production Tooling</p>
+      <div class="exp-row">
+        <div class="exp-text">
+          <div class="timeline-meta">May 2022 – Aug 2022 · Redmond, WA</div>
+          <div class="timeline-company">SpaceX</div>
+          <div class="timeline-role">Mechanical Engineering Intern</div>
+          <p class="timeline-desc">v2.0 Starlink Solar Production Tooling</p>
+        </div>
+        <figure class="exp-figure">
+          <img class="exp-img" src="starlink.webp" alt="Stack of Starlink satellites in orbit above Earth" width="1200" height="667" loading="lazy" decoding="async">
+          <figcaption class="img-credit">Image by SpaceX</figcaption>
+        </figure>
+      </div>
     </div>
 
     <!-- NASA -->
@@ -1401,36 +1433,6 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
-
-// ========================================
-// CUSTOM CURSOR (lerp smoothing)
-// ========================================
-const cursor = document.getElementById('cursor');
-let mx = 0, my = 0, cx = 0, cy = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-});
-
-document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
-document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
-
-function lerp(a, b, t) { return a + (b - a) * t; }
-
-(function animateCursor() {
-  cx = lerp(cx, mx, 0.16);
-  cy = lerp(cy, my, 0.16);
-  cursor.style.left = cx + 'px';
-  cursor.style.top  = cy + 'px';
-  requestAnimationFrame(animateCursor);
-})();
-
-// Scale cursor on interactive elements
-document.querySelectorAll('a, button, .skill-tag, .project-card, .edu-card, .social-link, .btn-primary, .btn-secondary').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
 
 // ========================================
 // SCROLL REVEAL (IntersectionObserver)
