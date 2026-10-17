@@ -288,27 +288,13 @@ section {
   animation: fadeUp 0.7s ease forwards 0.65s;
 }
 
-.hero-currently {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.hero-aside {
+  font-size: 0.85rem;
+  font-weight: 300;
   color: var(--muted);
-  margin-bottom: 2.25rem;
   opacity: 0;
+  margin-bottom: 2.25rem;
   animation: fadeUp 0.7s ease forwards 0.78s;
-}
-.pulse-dot {
-  width: 7px; height: 7px;
-  background: var(--red);
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulse 2.2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(227,30,36,0.5); }
-  50%       { box-shadow: 0 0 0 6px rgba(227,30,36,0); }
 }
 
 .hero-cta {
@@ -425,46 +411,6 @@ section {
 }
 
 /* ========================================
-   ABOUT
-   ======================================== */
-#about { border-top: 1px solid var(--border); }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-.about-text p {
-  font-size: 1.025rem;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.85;
-  margin-bottom: 1.25rem;
-}
-.about-text p strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.about-photos { display: flex; flex-direction: column; gap: 1.5rem; }
-
-.about-photo-item { position: relative; }
-.about-photo-item img {
-  width: 70%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-.photo-caption {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--muted);
-  margin-top: 0.5rem;
-  letter-spacing: 0.05em;
-}
-
-/* ========================================
    EXPERIENCE
    ======================================== */
 #experience { border-top: 1px solid var(--border); }
@@ -540,6 +486,14 @@ section {
   top: 0.1em;
 }
 
+.timeline-desc {
+  font-size: 0.925rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.65;
+}
+.timeline-company + .timeline-meta { margin-top: 0.75rem; }
+
 /* Tesla grouped entries */
 .tesla-badge {
   display: inline-block;
@@ -555,7 +509,7 @@ section {
 .tesla-divider {
   border: none;
   border-top: 1px dashed var(--border);
-  margin: 1.5rem 0;
+  margin: 1.1rem 0;
 }
 
 /* ========================================
@@ -913,8 +867,6 @@ section {
     margin: 0 auto;
   }
   .hero-photo-wrap img { max-width: 100%; }
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-photo-item img { margin: 0 auto; }
   .education-layout { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .publication-card { flex-direction: column; }
@@ -956,7 +908,6 @@ section {
 <nav id="nav">
   <a href="#home" class="nav-logo">SM</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -973,7 +924,6 @@ section {
 <!-- Mobile nav overlay -->
 <div class="nav-mobile" id="mobile-nav" role="dialog" aria-modal="true">
   <button class="nav-close-btn" id="nav-close" aria-label="Close menu">✕</button>
-  <a href="#about"      class="mobile-link">About</a>
   <a href="#experience" class="mobile-link">Experience</a>
   <a href="#education"  class="mobile-link">Education</a>
   <a href="#projects"   class="mobile-link">Projects</a>
@@ -992,17 +942,14 @@ section {
 
       <!-- Staggered word animation -->
       <p class="hero-subtitle">
-        <span class="word">Engineer.</span>&ensp;<span class="word">Builder.</span>&ensp;<span class="word">Incoming&nbsp;@ Sunday&nbsp;Robotics.</span>
+        <span class="word">Engineer.</span>&ensp;<span class="word">Builder.</span>&ensp;<span class="word">Mechanical&nbsp;Engineer&nbsp;@ Sunday.</span>
       </p>
 
       <p class="hero-bio">
         I like building hardware for hard problems.
       </p>
 
-      <p class="hero-currently">
-        <span class="pulse-dot"></span>
-        Currently: Mechanical Engineer at Sunday Robotics
-      </p>
+      <p class="hero-aside">Two-time fantasy football champion. Big country music fan.</p>
 
       <div class="hero-cta">
         <a href="#projects" class="btn-primary">See My Work</a>
@@ -1045,78 +992,37 @@ section {
 </section>
 
 <!-- ========================================
-     ABOUT
-     ======================================== -->
-<section id="about">
-  <div class="section-label reveal">01 / About</div>
-  <h2 class="section-title reveal">About</h2>
-
-  <div class="about-grid">
-
-  <div class="about-text reveal">
-    <p>I've spent most of my engineering education and experience building hardware that moves and interacts with people — it's the kind of work I find the most fun and challenging. From vehicles and tools at Tesla and SpaceX, to humanoid robots at Sunday, I want to keep building hardware for people.</p>
-    <p>I'm especially drawn to the hard problems where the constraints are messy and the requirements keep changing — not because I enjoy suffering, but because that's where the most fun design lives. I love starting with the numbers and iterating ten times over until I get it right.</p>
-    <p>When I'm not building cool stuff, I'm probably lifting at the gym, catching up on the latest DC comics, or obsessing over the NBA, NFL, or F1 with unhealthy intensity. I'm a two-time fantasy football champion, which is the most important credential on this webpage. As a Texas native, I'm justifiably obsessed with country music.</p>
-  </div>
-
-    <div class="about-photos reveal">
-      <!-- ABOUT PHOTO: smaredia.jpg -->
-      <div class="about-photo-item">
-        <img src="smaredia.jpg" alt="Sharil Maredia">
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ========================================
      EXPERIENCE
      ======================================== -->
 <section id="experience">
-  <div class="section-label reveal">02 / Experience</div>
+  <div class="section-label reveal">01 / Experience</div>
   <h2 class="section-title reveal">Experience</h2>
 
   <div class="timeline">
 
-    <!-- Sunday Robotics -->
+    <!-- Sunday -->
     <div class="timeline-item reveal">
-      <div class="timeline-meta">Incoming · Full-Time</div>
-      <div class="timeline-company">Sunday Robotics</div>
+      <div class="timeline-meta">Jul 2026 – Present · Full-Time</div>
+      <div class="timeline-company">Sunday</div>
       <div class="timeline-role">Mechanical Engineer</div>
-      <ul class="timeline-bullets">
-        <li>Joining full-time post-MIT.</li>
-      </ul>
-    </div>
-
-    <!-- MIT Self-Assembly Lab -->
-    <div class="timeline-item reveal">
-      <div class="timeline-meta">Aug 2024 – Present · Cambridge, MA</div>
-      <div class="timeline-company">MIT Self-Assembly Lab</div>
-      <div class="timeline-role">Researcher</div>
-      <ul class="timeline-bullets">
-        <li>Constructed a 5m × 5m × 3m gantry system to simulate oceanic forcing on atolls for coastal regrowth research.</li>
-        <li>Architected integrated electronics and control software enabling data-driven simulation. </li>
-      </ul>
+      <p class="timeline-desc">Bringing humanoid robotics into the home</p>
     </div>
 
     <!-- Tesla — grouped with 3-internships badge -->
     <div class="timeline-item reveal">
       <span class="tesla-badge">3 INTERNSHIPS</span>
-      <div class="timeline-meta">Jun 2024 – Aug 2024 &amp; May 2025 – Aug 2025 · Hawthorne, CA</div>
       <div class="timeline-company">Tesla</div>
+      <div class="timeline-meta">May 2025 – Aug 2025 · Hawthorne, CA</div>
       <div class="timeline-role">New Programs Engineering Intern</div>
-      <ul class="timeline-bullets">
-        <li>Led HVAC system development for the Tesla Robovan and a safety critical Roadster system as Responsible Engineer.</li>
-        <li>Supported Cybercab prototype builds — designed parts to resolve assembly issues and optimize processes.</li>
-        <li>Produced a LIDAR-based ground truth test rig for Model 3 used for Cybercab calibration.</li>
-      </ul>
+      <p class="timeline-desc">Roadster</p>
+      <hr class="tesla-divider">
+      <div class="timeline-meta">Jun 2024 – Aug 2024 · Hawthorne, CA</div>
+      <div class="timeline-role">New Programs Engineering Intern</div>
+      <p class="timeline-desc">Cybercab + Robovan</p>
       <hr class="tesla-divider">
       <div class="timeline-meta">May 2023 – Aug 2023 · Palo Alto, CA</div>
       <div class="timeline-role">Mechanical Design Engineering Intern</div>
-      <ul class="timeline-bullets">
-        <li>Designed and validated Model S/X battery pack changes to reduce thermal event propagation, cut costs, improve assembly.</li>
-        <li>Developed HV distribution structural parts for Model 3/Y battery pack to minimize headcount and BOM costs.</li>
-      </ul>
+      <p class="timeline-desc">S/X and 3/Y HV Battery Pack</p>
     </div>
 
     <!-- SpaceX -->
@@ -1124,9 +1030,7 @@ section {
       <div class="timeline-meta">May 2022 – Aug 2022 · Redmond, WA</div>
       <div class="timeline-company">SpaceX</div>
       <div class="timeline-role">Mechanical Engineering Intern</div>
-      <ul class="timeline-bullets">
-        <li>Designed and implemented automated tooling for Starlink v2.0 solar module production line — significant rate and yield improvements.</li>
-      </ul>
+      <p class="timeline-desc">v2.0 Starlink Solar Production Tooling</p>
     </div>
 
     <!-- NASA -->
@@ -1134,9 +1038,7 @@ section {
       <div class="timeline-meta">Aug 2019 – Mar 2020 · Houston, TX</div>
       <div class="timeline-company">NASA – Johnson Space Center</div>
       <div class="timeline-role">Mechanical Engineering Intern</div>
-      <ul class="timeline-bullets">
-        <li>Engineered a more efficient water capture and recirculation device for the ISS with NASA Crew and Thermal Systems.</li>
-      </ul>
+      <p class="timeline-desc">ISS Water Capture + Recirculation</p>
     </div>
 
   </div>
@@ -1146,7 +1048,7 @@ section {
      EDUCATION
      ======================================== -->
 <section id="education">
-  <div class="section-label reveal">03 / Education</div>
+  <div class="section-label reveal">02 / Education</div>
   <h2 class="section-title reveal">Education</h2>
 
   <div class="education-layout">
@@ -1201,7 +1103,7 @@ section {
      PROJECTS
      ======================================== -->
 <section id="projects">
-  <div class="section-label reveal">04 / Projects</div>
+  <div class="section-label reveal">03 / Projects</div>
   <h2 class="section-title reveal">Projects</h2>
 
   <div class="projects-grid">
@@ -1343,7 +1245,7 @@ section {
      SKILLS
      ======================================== -->
 <section id="skills">
-  <div class="section-label reveal">05 / Skills</div>
+  <div class="section-label reveal">04 / Skills</div>
   <h2 class="section-title reveal">Skills</h2>
   <div class="skills-cloud reveal">
     <span class="skill-tag">SolidWorks</span>
