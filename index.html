@@ -454,24 +454,6 @@ section {
   color: var(--muted);
   margin-bottom: 0.9rem;
 }
-.timeline-bullets li {
-  font-size: 0.925rem;
-  font-weight: 300;
-  color: var(--muted);
-  padding-left: 1.1rem;
-  position: relative;
-  margin-bottom: 0.45rem;
-  line-height: 1.65;
-}
-.timeline-bullets li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  opacity: 0.5;
-  font-size: 0.7rem;
-  top: 0.1em;
-}
 
 .timeline-desc {
   font-size: 0.925rem;
@@ -997,7 +979,7 @@ section {
           <div class="logo-item">
             <img src="mit-logo.png" alt="MIT" onerror="logoFallback(this,'MIT')">
           </div>
-          <!-- Tesla logo (SVG file — brightness filter makes it white) -->
+          <!-- Tesla logo -->
           <div class="logo-item">
             <img src="tesla-logo.png" alt="Tesla" onerror="logoFallback(this,'Tesla')">
           </div>
@@ -1147,8 +1129,8 @@ section {
 
     <!-- Publication callout -->
     <div class="publication-card reveal">
-      <!-- PUBLICATION IMAGE: n9.png -->
-      <img class="pub-img" src="n9.png" alt="Sediment Transport Simulation System">
+      <!-- PUBLICATION IMAGE: n9.jpg -->
+      <img class="pub-img" src="n9.jpg" alt="Sediment Transport Simulation System">
       <div>
         <div class="pub-label">Publication</div>
         <div class="pub-title">Sediment Transport Simulation System for Coastal Regrowth and Resiliency Studies</div>
@@ -1183,7 +1165,6 @@ section {
       <div class="project-image-wrap">
         <!-- PROJECT IMAGE: ontrack.jpeg — OnTrack automated rail-cleaning system -->
         <img src="ontrack.jpeg" alt="OnTrack — MIT 2.009">
-        <!-- ADDITIONAL ASSET: ontrack2.jpg — second OnTrack photo, consider gallery or swap -->
       </div>
       <div class="project-body">
         <div class="project-context">MIT 2.009 · 2023</div>
@@ -1194,7 +1175,7 @@ section {
           <span class="tag">Team Lead</span>
           <span class="tag">MIT 2.009</span>
         </div>
-        <a href="OnTrack Product Sheet.pdf" class="project-link" target="_blank" rel="noopener">Learn more →</a>
+        <a href="OnTrackProductSheet.pdf" class="project-link" target="_blank" rel="noopener">Learn more →</a>
       </div>
     </div>
 
@@ -1203,10 +1184,6 @@ section {
       <div class="project-image-wrap">
         <!-- PROJECT IMAGE: Lathe.jpg — Desktop Lathe (capital L) -->
         <img src="Lathe.jpg" alt="Desktop Lathe — MIT 2.72">
-        <!--
-          PROJECT VIDEO: Lathe.mp4 available — to enable, replace the <img> above with:
-          <video src="Lathe.mp4" controls poster="Lathe.jpg" style="width:100%;height:100%;object-fit:cover;"></video>
-        -->
       </div>
       <div class="project-body">
         <div class="project-context">MIT 2.72 · 2023</div>
@@ -1219,7 +1196,6 @@ section {
           <span class="tag">Manufacturing</span>
           <span class="tag">MIT 2.72</span>
         </div>
-        <!-- PROJECT LINK: replace href with your link (e.g. "2.72 Design Presentation.pdf") -->
         <a href="https://docs.google.com/presentation/d/1-bucpq1SuNQ69fqkZPtD2gYGfUl8D2HWq7JlJinnn48/edit?usp=sharing" class="project-link" target="_blank" rel="noopener">Learn more →</a>
       </div>
     </div>
@@ -1229,11 +1205,6 @@ section {
       <div class="project-image-wrap">
         <!-- PROJECT IMAGE: yoyo.jpg — Mass-Manufactured Yoyo -->
         <img src="yoyo.jpg" alt="Mass-Manufactured Yoyo — MIT 2.008">
-        <!-- ADDITIONAL ASSET: yoyo2.jpg — second yoyo photo, swap or add as gallery -->
-        <!--
-          ADDITIONAL ASSET: yoyo.MOV — yoyo video available, to enable:
-          <video src="yoyo.MOV" controls poster="yoyo1.jpg" style="width:100%;height:100%;object-fit:cover;"></video>
-        -->
       </div>
       <div class="project-body">
         <div class="project-context">MIT 2.008 · 2022</div>
@@ -1246,7 +1217,6 @@ section {
           <span class="tag">Product Design</span>
           <span class="tag">MIT 2.008</span>
         </div>
-        <!-- PROJECT LINK: replace href with your link (e.g. "2.008 Design Presentation.pdf") -->
         <a href="https://docs.google.com/presentation/d/1ChItP3xaVc4efqNSltpaLtwtOetA-0O3XC7D9xZwUAQ/edit?usp=sharing" class="project-link" target="_blank" rel="noopener">Learn more →</a>
       </div>
     </div>
@@ -1267,7 +1237,6 @@ section {
           <span class="tag">Robotics</span>
           <span class="tag">MIT 2.679</span>
         </div>
-        <!-- PROJECT LINK: replace href with your link (e.g. "2.679 Design Presentation.pdf") -->
         <a href="https://docs.google.com/presentation/d/13b_scnfQV0gXtEKLZTPdkBJ0toDRwOvlQB6e4vwxKaA/edit?usp=sharing" class="project-link" target="_blank" rel="noopener">Learn more →</a>
       </div>
     </div>
@@ -1386,30 +1355,13 @@ section {
       </a>
     </div>
 
-    <p class="footer-note">Sharil Maredia &middot; 2025 &middot; Brought to you by Claude Code</p>
+    <p class="footer-note">Sharil Maredia &middot; <span id="year">2026</span> &middot; Brought to you by Claude Code</p>
   </div>
 </section>
 
-<!--
-  ========================================
-  UNUSED ASSETS
-  Files found in the project folder not placed above.
-  Review and drop into appropriate sections as needed.
-
-  UNUSED ASSET: micd.JPG       — now used as hero photo; was OnTrack card photo
-  UNUSED ASSET: ontrack2.jpg   — second OnTrack photo; consider swapping into OnTrack card or adding as gallery
-  UNUSED ASSET: yoyo2.jpg      — second yoyo photo; swap or display alongside yoyo1.jpg
-  UNUSED ASSET: yoyo.MOV       — yoyo video; see commented-out <video> tag in Yoyo project card
-  UNUSED ASSET: Lathe.mp4      — lathe video; see commented-out <video> tag in Desktop Lathe card
-  UNUSED ASSET: 2.008 Design Presentation.pdf — Yoyo project presentation; link from project card if desired
-  UNUSED ASSET: 2.679 Design Presentation.pdf — PCB/Robot project presentation; link from project card if desired
-  UNUSED ASSET: 2.72 Design Presentation.pdf  — Desktop Lathe project presentation; link from project card if desired
-  UNUSED ASSET: OnTrack Product Sheet.pdf      — OnTrack product sheet; link from project card if desired
-  UNUSED ASSET: LinkedIn.pdf                   — LinkedIn export; no placement needed
-  ========================================
--->
 
 <script>
+document.getElementById('year').textContent = new Date().getFullYear();
 // ========================================
 // LOGO FALLBACK HELPER
 // ========================================
