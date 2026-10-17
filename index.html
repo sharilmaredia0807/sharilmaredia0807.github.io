@@ -570,12 +570,21 @@ section {
   height: auto;
   display: block;
 }
+.edu-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 35%;
+  background: linear-gradient(to top, rgba(10,10,10,0.6), transparent);
+  pointer-events: none;
+}
 .edu-photo-caption {
   position: absolute;
+  z-index: 1;
   bottom: 1.25rem; left: 1.5rem;
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: rgba(240,240,240,0.55);
+  color: rgba(240,240,240,0.8);
   letter-spacing: 0.1em;
 }
 
@@ -983,9 +992,9 @@ section {
       </div>
     </div><!-- /.hero-text -->
 
-    <!-- HERO IMAGE: micd.JPG -->
+    <!-- HERO IMAGE: hero-headshot.jpg (cropped from memoheadshot.jpg) -->
     <div class="hero-photo-wrap">
-      <img src="mefunlong.JPG" alt="Sharil Maredia">
+      <img src="hero-headshot.jpg" alt="Sharil Maredia with a Sunday humanoid robot" width="999" height="1000">
     </div>
 
   </div>
@@ -1069,10 +1078,10 @@ section {
       <div class="edu-gpa">GPA: 5.0 / 5.0</div>
     </div>
 
-    <!-- EDUCATION PHOTO: mitgrad.jpg — full-bleed with overlay -->
+    <!-- EDUCATION PHOTO: mit-headshot.jpg (cropped from mitheadshot.JPG) — full-bleed with overlay -->
     <div class="edu-photo-wrap reveal">
-      <img src="mitgrad.jpg" alt="MIT Commencement 2024">
-      <span class="edu-photo-caption">MIT Commencement, 2024</span>
+      <img src="mit-headshot.jpg" alt="Sharil Maredia at MIT" width="2000" height="1000" loading="lazy" decoding="async">
+      <span class="edu-photo-caption">MIT · Cambridge, MA</span>
     </div>
 
     <!-- Publication callout -->
